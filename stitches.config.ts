@@ -1,22 +1,33 @@
 import { createStitches } from '@stitches/react'
 
-export const { getCssText, globalCss } = createStitches({
-  theme: {
-    colors: {
-      blue: '#00AEFF',
-      white: '#FFF',
-      'gray-1': '#E5E5E5',
-      'gray-2': '#8F9199',
-      'gray-3': '#828792',
-      gradient:
-        'linear-gradient(136.72deg, rgba(7, 7, 10, 0.86) 19.22%, rgba(15, 16, 22, 0.5) 76.59%)',
-      black: '#020203',
+export const { getCssText, globalCss, styled, css, keyframes, theme } =
+  createStitches({
+    theme: {
+      colors: {
+        blue: '#00AEFF',
+        white: '#FFF',
+        'gray-1': '#E5E5E5',
+        'gray-2': '#8F9199',
+        'gray-3': '#828792',
+        'gray-4': '#9D9D9D',
+        neutral: '#15171B',
+        'gradient-1':
+          'linear-gradient(136.72deg, rgba(7, 7, 10, 0.86) 19.22%, rgba(15, 16, 22, 0.5) 76.59%)',
+        black: '#020203',
+        'gradient-2':
+          'linear-gradient(180deg, #020203 0%, rgba(14, 17, 23, 0.92) 96.35%, rgba(14, 17, 23, 0.9) 100%)',
+      },
+      fonts: {
+        poppins: 'Poppins, sans-serif',
+      },
     },
-    fonts: {
-      poppins: 'Poppins, sans-serif',
+    media: {
+      xl: '(max-width: 1440px)',
+      lg: '(max-width: 1160px)',
+      md: '(max-width: 768px)',
+      sm: '(max-width: 375px)',
     },
-  },
-})
+  })
 
 export const resetCss = globalCss({
   '*': {
@@ -24,10 +35,20 @@ export const resetCss = globalCss({
     padding: 0,
     boxSizing: 'border-box',
   },
+  html: {
+    fontSize: '62.5%',
+  },
   body: {
     width: '100%',
     fontFamily: '$poppins',
     backgroundColor: '$black',
     color: '$white',
+  },
+  'a, button': {
+    textDecoration: 'none',
+    color: 'CurrentColor',
+    cursor: 'pointer',
+    border: 'none',
+    fontFamily: '$poppins',
   },
 })
