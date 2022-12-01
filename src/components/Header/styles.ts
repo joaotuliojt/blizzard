@@ -4,7 +4,10 @@ export const Container = styled('header', {
   height: '9.6rem',
   borderBottom: '0.2rem solid',
   borderColor: 'rgba(255, 255, 255, 0.1)',
-  position: 'relative',
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  width: '100%',
   zIndex: 10,
 })
 

@@ -1,13 +1,14 @@
 import * as Styled from './styles'
 
 import BlizzardLogo from '@/assets/icons/logo.svg'
-import UserIcon from '@/assets/icons/user.svg'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Nav } from '../Nav'
 import { Button } from '../Button'
 import { Menu } from '../Menu'
+
 import { useState } from 'react'
+import { LoginModal } from '../LoginModal'
 
 export function Header() {
   const [isExpanded, setIsExpanded] = useState(false)
@@ -34,18 +35,7 @@ export function Header() {
           </Styled.NavContainer>
           <Styled.ButtonsWrap>
             <Button variant="outlined">Criar Conta</Button>
-            <Button
-              leftIcon={
-                <Image
-                  src={UserIcon}
-                  alt="Criar conta"
-                  width={19}
-                  height={19}
-                />
-              }
-            >
-              Logar
-            </Button>
+            <LoginModal />
             <Styled.MenuHamburguer aria-label="Abrir menu">
               <div className="menu-hamburguer"></div>
             </Styled.MenuHamburguer>

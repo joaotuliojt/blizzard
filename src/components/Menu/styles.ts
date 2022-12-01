@@ -11,13 +11,25 @@ export const Container = styled('div', {
   backdropFilter: 'blur(6px)',
   display: 'flex',
   flexDirection: 'column',
+  zIndex: 5,
   '@media(max-width:1260px)': {
     display: 'none',
   },
   variants: {
     show: {
-      true: {
+      false: {
+        height: '0rem',
+      },
+    },
+    selected: {
+      games: {
         height: '64rem',
+      },
+      sport: {
+        height: '52rem',
+      },
+      null: {
+        height: 0,
       },
     },
   },
@@ -54,6 +66,12 @@ export const Game = styled('a', {
   alignItems: 'center',
   p: {
     textAlign: 'center',
+  },
+  img: {
+    transition: 'all ease 0.4s',
+  },
+  '&:hover img': {
+    transform: 'translateY(-4px)',
   },
 })
 

@@ -43,12 +43,16 @@ export const resetCss = globalCss({
     fontFamily: '$poppins',
     backgroundColor: '$black',
     color: '$white',
+    minHeight: '100vh',
   },
   'a, button': {
     textDecoration: 'none',
     color: 'CurrentColor',
     cursor: 'pointer',
     border: 'none',
+    fontFamily: '$poppins',
+  },
+  input: {
     fontFamily: '$poppins',
   },
 })

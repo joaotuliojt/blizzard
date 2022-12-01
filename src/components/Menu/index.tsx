@@ -24,7 +24,7 @@ import iconDownload from '@/assets/icons/icon-downloads.svg'
 import iconChat from '@/assets/icons/icon-chat.svg'
 import trophy from '@/assets/icons/trophy.svg'
 
-import { ReactElement, useMemo } from 'react'
+import { Fragment, ReactElement, useMemo } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -138,17 +138,17 @@ export function Menu({ show, selectedMenu }: MenuProps) {
   )
 
   return (
-    <Styled.Container show={show}>
+    <Styled.Container show={show} selected={selectedMenu || 'null'}>
       <Styled.GamesContainer selected={selectedMenu || 'games'}>
         {selectedMenu === 'games' && (
           <>
             {games.map((game) => (
-              <span key={game.name}>
+              <Fragment key={game.name}>
                 <Styled.Game>
                   {game.image}
                   <p>{game.name}</p>
                 </Styled.Game>
-              </span>
+              </Fragment>
             ))}
           </>
         )}
