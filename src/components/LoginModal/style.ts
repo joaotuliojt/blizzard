@@ -11,6 +11,8 @@ export const Overlay = styled(Dialog.Overlay, {
   bottom: 0,
   display: 'grid',
   placeItems: 'center',
+  background: 'rgba(0, 0 ,0 , 0.5)',
+  zIndex: 20,
 })
 
 export const Content = styled(Dialog.Content, {

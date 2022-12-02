@@ -27,6 +27,16 @@ export const { getCssText, globalCss, styled, css, keyframes, theme } =
       md: '(max-width: 768px)',
       sm: '(max-width: 375px)',
     },
+    utils: {
+      bgImage: (value: string) => ({
+        background:
+          'radial-gradient(72.28% 72.28% at 52.36% 25.95%, rgba(2, 2, 3, 0) 0%, #020203 71.1%)',
+        backgroundImage: `url(${value})`,
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+      }),
+    },
   })
 
 export const resetCss = globalCss({

@@ -51,6 +51,18 @@ export const ButtonStyle = css({
         gap: '0.7rem',
       },
     },
+    alignment: {
+      left: {
+        justifyContent: 'flex-start',
+        minWidth: '0',
+        width: 'fit-content',
+      },
+    },
+    fullWidth: {
+      true: {
+        width: '100%',
+      },
+    },
   },
   defaultVariants: {
     variant: 'primary',
