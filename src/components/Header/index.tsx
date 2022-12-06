@@ -16,6 +16,11 @@ export function Header() {
     null
   )
 
+  const reset = () => {
+    setIsExpanded(false)
+    setSelectedMenu(null)
+  }
+
   return (
     <>
       <Styled.Container>
@@ -43,6 +48,7 @@ export function Header() {
         </Styled.ContentContainer>
       </Styled.Container>
       <Menu show={isExpanded} selectedMenu={selectedMenu} />
+      {isExpanded && <Styled.Overlay onClick={reset} />}
     </>
   )
 }

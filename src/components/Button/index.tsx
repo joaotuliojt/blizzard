@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { ButtonHTMLAttributes, ReactNode } from 'react'
 import { ButtonStyle } from './style'
 
@@ -6,7 +8,7 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   leftIcon?: ReactNode
   fullWidth?: boolean
   aligment?: 'left'
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ref?: any
   css?: any
 }
 

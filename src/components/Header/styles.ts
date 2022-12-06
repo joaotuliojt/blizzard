@@ -109,3 +109,10 @@ export const MenuHamburguer = styled('button', {
     margin: 0,
   },
 })
+
+export const Overlay = styled('div', {
+  position: 'absolute',
+  width: '100%',
+  height: '100vh',
+  zIndex: 4,
+})

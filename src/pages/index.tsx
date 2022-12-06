@@ -1,11 +1,44 @@
+import { Games } from '@/components/containers/Games'
 import { Hero } from '@/components/containers/Hero'
 import { Header } from '@/components/Header'
+import { GetStaticProps } from 'next'
+import Head from 'next/head'
 
-export default function Home() {
+export interface IGames {
+  name: string
+  category: string
+  image: string
+  logo: string
+}
+
+interface HomeProps {
+  games: IGames[]
+}
+
+export default function Home({ games }: HomeProps) {
   return (
-    <main>
-      <Header />
-      <Hero />
-    </main>
+    <>
+      <Head>
+        <title>Home | Blizzard</title>
+      </Head>
+      <main>
+        <Header />
+        <Hero />
+        <Games games={games} />
+      </main>
+    </>
   )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const response = await fetch(
+    'https://api.brchallenges.com/api/blizzard/games'
+  )
+  const data: IGames[] = await response.json()
+
+  return {
+    props: {
+      games: data,
+    },
+  }
 }

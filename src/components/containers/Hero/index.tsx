@@ -16,16 +16,16 @@ import wowGif from '@/assets/banners_hero/wow-animation.gif'
 import wowLogo from '@/assets/banners_hero/wow-logo.png'
 
 import UserIcon from '@/assets/icons/user.svg'
+import PlayIcon from '@/assets/icons/play.svg'
 
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Slider } from '@/components/Slider'
 import { Button } from '@/components/Button'
 import {
   MouseParallaxChild,
   MouseParallaxContainer,
-  useParallaxOffset,
 } from 'react-parallax-mouse'
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 
 interface IGames {
   id: string
@@ -33,21 +33,30 @@ interface IGames {
   heading: string
   text: string
   buttonText: string
-  logo: string
+  logo: StaticImageData
   trailer: {
-    gif: string
-    thumbnail: string
+    gif: StaticImageData
+    thumbnail: StaticImageData
   }
 }
 
 export function Hero() {
   const [index, setIndex] = useState(0)
-  const progressRef = useRef<HTMLDivElement>(null)
+  const [timer, setTimer] = useState<NodeJS.Timer | null>(null)
 
-  const { x, y } = useParallaxOffset()
   useEffect(() => {
-    console.log(x, y)
-  }, [x, y])
+    if (timer) {
+      clearTimeout(timer)
+    }
+    const newTimer = setTimeout(() => {
+      if (index + 1 === games.length) {
+        setIndex(0)
+      } else {
+        setIndex(index + 1)
+      }
+    }, 5000)
+    setTimer(newTimer)
+  }, [index])
 
   const games = useMemo<IGames[]>(
     () => [
@@ -58,10 +67,10 @@ export function Hero() {
         text: 'O retorno de Lilith traz uma era de escuridão e sofrimento',
         buttonText: 'Jogue agora',
         trailer: {
-          gif: diabloGif.src,
-          thumbnail: diabloThumb.src,
+          gif: diabloGif,
+          thumbnail: diabloThumb,
         },
-        logo: diabloLogo.src,
+        logo: diabloLogo,
       },
       {
         id: 'hearthstone',
@@ -70,10 +79,10 @@ export function Hero() {
         text: 'A Horda e a Aliança se encontraram no Vale Alterac para lutar',
         buttonText: 'Reserve agora na pré-venda',
         trailer: {
-          gif: hearthstoneGif.src,
-          thumbnail: hearthstoneThumb.src,
+          gif: hearthstoneGif,
+          thumbnail: hearthstoneThumb,
         },
-        logo: hearthstoneLogo.src,
+        logo: hearthstoneLogo,
       },
       {
         id: 'wow',
@@ -82,10 +91,10 @@ export function Hero() {
         text: 'O que jaz além do mundo que você conhece?',
         buttonText: 'Reserve agora na pré-venda',
         trailer: {
-          gif: wowGif.src,
-          thumbnail: wowThumb.src,
+          gif: wowGif,
+          thumbnail: wowThumb,
         },
-        logo: wowLogo.src,
+        logo: wowLogo,
       },
     ],
     []
@@ -106,6 +115,7 @@ export function Hero() {
       />
       {games.map((game, i) => (
         <Styled.GameContent key={game.id} active={i === index}>
+          {i === index && <Styled.ProgressBar />}
           <MouseParallaxContainer
             containerStyle={{
               width: '100%',
@@ -142,10 +152,42 @@ export function Hero() {
                 {game.buttonText}
               </Button>
             </Styled.LeftSide>
+            <Styled.RightSide>
+              <Image
+                src={game.logo.src}
+                width={game.logo.width}
+                height={game.logo.height}
+                alt=""
+                className="logo"
+              />
+
+              <Styled.GameTrailerWrapper>
+                <p>Assita o trailer</p>
+                <Styled.GameTrailer>
+                  <Image
+                    src={game.trailer.thumbnail.src}
+                    width={game.trailer.thumbnail.width}
+                    height={game.trailer.thumbnail.height}
+                    alt=""
+                    className="thumbnail"
+                  />
+                  <Image
+                    src={game.trailer.gif.src}
+                    width={game.trailer.gif.width}
+                    height={game.trailer.gif.height}
+                    alt=""
+                    className="gif"
+                  />
+
+                  <button aria-label="Assistir trailer">
+                    <Image src={PlayIcon} alt="" />
+                  </button>
+                </Styled.GameTrailer>
+              </Styled.GameTrailerWrapper>
+            </Styled.RightSide>
           </Styled.GameContainers>
         </Styled.GameContent>
       ))}
-      <Styled.ProgressBar ref={progressRef} />
     </Styled.Container>
   )
 }

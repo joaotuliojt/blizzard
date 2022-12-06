@@ -138,56 +138,58 @@ export function Menu({ show, selectedMenu }: MenuProps) {
   )
 
   return (
-    <Styled.Container show={show} selected={selectedMenu || 'null'}>
-      <Styled.GamesContainer selected={selectedMenu || 'games'}>
-        {selectedMenu === 'games' && (
-          <>
-            {games.map((game) => (
-              <Fragment key={game.name}>
-                <Styled.Game>
-                  {game.image}
-                  <p>{game.name}</p>
-                </Styled.Game>
-              </Fragment>
-            ))}
-          </>
-        )}
-        {selectedMenu === 'sport' && (
-          <>
-            {sports.map((game) => (
-              <span key={game.name}>
-                <Styled.Game>
-                  {game.image}
-                  <p>{game.name}</p>
-                </Styled.Game>
-              </span>
-            ))}
-          </>
-        )}
-      </Styled.GamesContainer>
-      <Styled.Footer>
-        {selectedMenu === 'games' && (
-          <>
+    <>
+      <Styled.Container show={show} selected={selectedMenu || 'null'}>
+        <Styled.GamesContainer selected={selectedMenu || 'games'}>
+          {selectedMenu === 'games' && (
+            <>
+              {games.map((game) => (
+                <Fragment key={game.name}>
+                  <Styled.Game>
+                    {game.image}
+                    <p>{game.name}</p>
+                  </Styled.Game>
+                </Fragment>
+              ))}
+            </>
+          )}
+          {selectedMenu === 'sport' && (
+            <>
+              {sports.map((game) => (
+                <span key={game.name}>
+                  <Styled.Game>
+                    {game.image}
+                    <p>{game.name}</p>
+                  </Styled.Game>
+                </span>
+              ))}
+            </>
+          )}
+        </Styled.GamesContainer>
+        <Styled.Footer>
+          {selectedMenu === 'games' && (
+            <>
+              <Link href={'#'}>
+                <Image src={cubes} alt="" /> Ver todos jogos
+              </Link>
+              <Link href={'#'}>
+                <Image src={iconLogo} alt="" /> Aplicativo Battle.net
+              </Link>
+              <Link href={'#'}>
+                <Image src={iconDownload} alt="" /> Downloads
+              </Link>
+              <Link href={'#'}>
+                <Image src={iconChat} alt="" /> Fóruns dos jogos
+              </Link>
+            </>
+          )}
+          {selectedMenu === 'sport' && (
             <Link href={'#'}>
-              <Image src={cubes} alt="" /> Ver todos jogos
+              <Image src={trophy} alt="" /> Torneios da comunidade
             </Link>
-            <Link href={'#'}>
-              <Image src={iconLogo} alt="" /> Aplicativo Battle.net
-            </Link>
-            <Link href={'#'}>
-              <Image src={iconDownload} alt="" /> Downloads
-            </Link>
-            <Link href={'#'}>
-              <Image src={iconChat} alt="" /> Fóruns dos jogos
-            </Link>
-          </>
-        )}
-        {selectedMenu === 'sport' && (
-          <Link href={'#'}>
-            <Image src={trophy} alt="" /> Torneios da comunidade
-          </Link>
-        )}
-      </Styled.Footer>
-    </Styled.Container>
+          )}
+        </Styled.Footer>
+      </Styled.Container>
+    </>
   )
 }

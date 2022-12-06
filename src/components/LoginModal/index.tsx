@@ -14,6 +14,7 @@ import UserIcon from '@/assets/icons/user.svg'
 import CloseIcon from '@/assets/icons/close.svg'
 import Battlenet from '@/assets/icons/battlenet.svg'
 import { Button } from '@/components/Button'
+import { ButtonStyle } from '../Button/style'
 
 /* interface LoginModalProps {
   isOpen: boolean;
@@ -24,13 +25,21 @@ export function LoginModal() {
     <>
       <Dialog.Root>
         <Dialog.Trigger asChild>
-          <Button
+          {/* <Button
             leftIcon={
               <Image src={UserIcon} alt="Criar conta" width={19} height={19} />
             }
           >
             Logar
-          </Button>
+          </Button> */}
+          <button
+            className={ButtonStyle({
+              withIcon: true,
+            })}
+          >
+            <Image src={UserIcon} alt="Criar conta" width={19} height={19} />
+            Logar
+          </button>
         </Dialog.Trigger>
         <Dialog.Portal>
           <Overlay>

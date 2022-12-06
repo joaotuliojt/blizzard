@@ -49,11 +49,21 @@ export function Slider({ gameIdActive, handleSelectGame }: SliderProps) {
     <Container>
       {games.map((game) => (
         <Game
+          aria-label={`Mudar para ${game.id}`}
           key={game.id}
           active={game.id === gameIdActive}
           onClick={() => handleSelectGame(game.id)}
         >
-          <Image src={game.image} width="48" height="48" alt="" />
+          <Image
+            src={game.image}
+            width="48"
+            height="48"
+            alt=""
+            style={{
+              width: '100%',
+              height: '100%',
+            }}
+          />
         </Game>
       ))}
     </Container>

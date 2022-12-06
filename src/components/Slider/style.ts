@@ -12,7 +12,7 @@ export const Container = styled('div', {
     left: '11.2rem',
   },
   '@md': {
-    left: '5.8rem',
+    left: '2.2rem',
     bottom: '10.5rem',
     flexDirection: 'row',
     top: 'auto',
@@ -30,6 +30,13 @@ export const Game = styled('button', {
   outline: 'none',
   border: 'none',
   transition: 'all ease 0.3s',
+  img: {
+    maxWidth: '100%',
+  },
+  '@md': {
+    width: '4rem',
+    height: '4rem',
+  },
   variants: {
     active: {
       true: {
