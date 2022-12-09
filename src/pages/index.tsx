@@ -1,3 +1,4 @@
+import { Download } from '@/components/containers/Download'
 import { Games } from '@/components/containers/Games'
 import { Hero } from '@/components/containers/Hero'
 import { Header } from '@/components/Header'
@@ -25,6 +26,7 @@ export default function Home({ games }: HomeProps) {
         <Header />
         <Hero />
         <Games games={games} />
+        <Download />
       </main>
     </>
   )
