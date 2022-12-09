@@ -89,7 +89,7 @@ export function Hero() {
         background: wowBg.src,
         heading: 'Desbrave as Terras Sombrias em Shadowlands! ',
         text: 'O que jaz além do mundo que você conhece?',
-        buttonText: 'Reserve agora na pré-venda',
+        buttonText: 'Reserve na pré-venda',
         trailer: {
           gif: wowGif,
           thumbnail: wowThumb,

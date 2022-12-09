@@ -1,7 +1,7 @@
 import { styled, keyframes } from '@/stitches-styled'
 import Background from '@/assets/images/background-section-download.png'
 
-export const Container = styled('div', {
+export const Container = styled('section', {
   marginTop: '10rem',
   background: `url(${Background.src}) no-repeat center`,
   backgroundSize: 'cover',
@@ -56,7 +56,8 @@ export const LeftSide = styled('div', {
     },
   },
   '@md': {
-    paddingBottom: '4rem',
+    marginBottom: '4rem',
+    paddingTop: '6.3rem',
   },
 })
 

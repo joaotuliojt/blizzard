@@ -76,8 +76,12 @@ export const Header = styled('header', {
     padding: '0 5rem',
   },
   '@media(max-width: 740px)': {
+    padding: '0 2.4rem',
     '.platform': {
       display: 'none',
+    },
+    '.left h2': {
+      fontSize: '2.8rem',
     },
     '.right': {
       margin: 0,

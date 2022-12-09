@@ -106,6 +106,7 @@ export const GameContainers = styled('div', {
   '@sm': {
     marginLeft: '2.2rem',
     paddingTop: '13.1rem',
+    paddingRight: '1rem',
   },
 })
 
