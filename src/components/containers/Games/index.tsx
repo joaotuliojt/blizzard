@@ -77,7 +77,7 @@ export function Games({ games }: GamesProps) {
       </Header>
       <GamesList>
         {games.map((game) => (
-          <GameCard key={game.name}>
+          <GameCard key={game.name} data-aos="fade-right">
             <div className="game-image-container">
               <Image className="game-image" src={game.image} alt="" fill />
               <div className="overlay"></div>
@@ -93,7 +93,7 @@ export function Games({ games }: GamesProps) {
             <p className="game-category">{game.category}</p>
           </GameCard>
         ))}
-        <CardSeeMore>
+        <CardSeeMore data-aos="fade-right">
           <div>
             <svg
               width="87"

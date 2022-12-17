@@ -16,22 +16,11 @@ import Battlenet from '@/assets/icons/battlenet.svg'
 import { Button } from '@/components/Button'
 import { ButtonStyle } from '../Button/style'
 
-/* interface LoginModalProps {
-  isOpen: boolean;
-} */
-
 export function LoginModal() {
   return (
     <>
       <Dialog.Root>
         <Dialog.Trigger asChild>
-          {/* <Button
-            leftIcon={
-              <Image src={UserIcon} alt="Criar conta" width={19} height={19} />
-            }
-          >
-            Logar
-          </Button> */}
           <button
             className={ButtonStyle({
               withIcon: true,

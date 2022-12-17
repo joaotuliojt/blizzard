@@ -65,4 +65,14 @@ export const resetCss = globalCss({
   input: {
     fontFamily: '$poppins',
   },
+  '::-webkit-scrollbar': {
+    width: '6px',
+  },
+  '::-webkit-scrollbar-track': {
+    background: '$neutral',
+  },
+  '::-webkit-scrollbar-thumb': {
+    background: '$blue',
+    borderRadius: '10px',
+  },
 })
