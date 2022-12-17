@@ -41,23 +41,6 @@ interface IGames {
 }
 
 export function Hero() {
-  const [index, setIndex] = useState(0)
-  const [timer, setTimer] = useState<NodeJS.Timer | null>(null)
-
-  useEffect(() => {
-    if (timer) {
-      clearTimeout(timer)
-    }
-    const newTimer = setTimeout(() => {
-      if (index + 1 === games.length) {
-        setIndex(0)
-      } else {
-        setIndex(index + 1)
-      }
-    }, 5000)
-    setTimer(newTimer)
-  }, [index])
-
   const games = useMemo<IGames[]>(
     () => [
       {
@@ -99,6 +82,24 @@ export function Hero() {
     ],
     []
   )
+
+  const [index, setIndex] = useState(0)
+  const [timer, setTimer] = useState<NodeJS.Timer | null>(null)
+
+  useEffect(() => {
+    if (timer) {
+      clearTimeout(timer)
+    }
+    const newTimer = setTimeout(() => {
+      if (index + 1 === games.length) {
+        setIndex(0)
+      } else {
+        setIndex(index + 1)
+      }
+    }, 5000)
+    setTimer(newTimer)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [index])
 
   const handleSelectGame = (id: string) => {
     const gameIndex = games.findIndex((game) => game.id === id)

@@ -7,10 +7,15 @@ import { Nav } from '../Nav'
 import { Button } from '../Button'
 import { Menu } from '../Menu'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { LoginModal } from '../LoginModal'
+import gsap from 'gsap'
 
 export function Header() {
+  const logoRef = useRef(null)
+  const navRef = useRef(null)
+  const buttonsRef = useRef(null)
+
   const [isExpanded, setIsExpanded] = useState(false)
   const [selectedMenu, setSelectedMenu] = useState<'games' | 'sport' | null>(
     null
@@ -21,12 +26,50 @@ export function Header() {
     setSelectedMenu(null)
   }
 
+  useEffect(() => {
+    const tl = gsap.timeline({ repeatDelay: 7500 })
+    tl.fromTo(
+      logoRef.current,
+      {
+        x: -10,
+        opacity: 0,
+      },
+      {
+        x: 0,
+        opacity: 1,
+        delay: 8.3,
+      }
+    )
+      .fromTo(
+        navRef.current,
+        {
+          x: -10,
+          opacity: 0,
+        },
+        {
+          x: 0,
+          opacity: 1,
+        }
+      )
+      .fromTo(
+        buttonsRef.current,
+        {
+          x: -10,
+          opacity: 0,
+        },
+        {
+          x: 0,
+          opacity: 1,
+        }
+      )
+  }, [])
+
   return (
     <>
       <Styled.Container>
         <Styled.ContentContainer>
           <Styled.NavContainer>
-            <Styled.Logo>
+            <Styled.Logo ref={logoRef}>
               <Link href="/">
                 <Image src={BlizzardLogo} alt="Blizzard" />
               </Link>
@@ -36,9 +79,10 @@ export function Header() {
               handleSelectMenu={setSelectedMenu}
               selectedMenu={selectedMenu}
               menuExpanded={isExpanded}
+              ref={navRef}
             />
           </Styled.NavContainer>
-          <Styled.ButtonsWrap>
+          <Styled.ButtonsWrap ref={buttonsRef}>
             <Button variant="outlined">Criar Conta</Button>
             <LoginModal />
             <Styled.MenuHamburguer aria-label="Abrir menu">
